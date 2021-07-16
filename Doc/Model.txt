@@ -1,0 +1,24 @@
+Product
+- IdProduct
+- ProductName
+- Description
+- ImageUrl
+- Price
+- Numbers
+
+Order		
+- IdOrder     
+- OrdererName
+- PhoneNumber
+- Address
+- DateOrder
+- TotalPrice
+
+OrderDetail
+- IdOrderDetail
+- IdProduct
+- Numbers
+- TotalPrice
+- IdOrder
+
+
