@@ -1,26 +1,66 @@
 [
   {
-    "IdProduct": "id1",
-    "ProductName": "name1",
-    "Description": "des1",
-    "ImageURL": "image1",
-    "Price": 1000.0,
-    "Numbers": 0
+    "productId": 1,
+    "productName": "Iphone 12 Pro Max",
+    "productDes": "Apple iPhone 12 Pro Max was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut.",
+    "productImg": "http://callmobilegalaxy.com/wp-content/uploads/2021/05/Apple-iPhone-12-Pro-Max-Pacific-Blue.png",
+    "productPrice": 12000000,
+    "Numbers": 1,
+    "brandID": 1
   },
   {
-    "IdProduct": "id2",
-    "ProductName": "name2",
-    "Description": "des2",
-    "ImageURL": "image2",
-    "Price": 2000.0,
-    "Numbers": 2
+    "productId": 2,
+    "ProductName": "Redmi Note 10 Pro",
+    "productDes": "Redmi Note 10 Pro was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut.",
+    "productImg": "https://cdn.tgdd.vn/Products/Images/42/222758/xiaomi-redmi-note-10-thumb-green-600x600.jpg",
+    "productPrice": 12000000,
+    "Numbers": 2,
+    "brandID": 3
+
   },
   {
-    "IdProduct": "id3",
-    "ProductName": "nam3",
-    "Description": "des3",
-    "ImageURL": "image3",
-    "Price": 3000.0,
-    "Numbers": 3
+    "productId": 3,
+    "ProductName": "Samsung Galaxy S21",
+    "productDes": "Samsung Galaxy S21 was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut.",
+    "productImg": "https://cdn.tgdd.vn/Products/Images/42/220833/TimerThumb/samsung-galaxy-s21-(8).jpg",
+    "productPrice": 46700000.0,
+    "Numbers": 3,
+    "brandID": 2
+  },
+  {
+    "productId": 4,
+    "ProductName": "Iphone 12 Pro",
+    "productDes": "Apple iPhone 12 Pro was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut.",
+    "productImg": "http://callmobilegalaxy.com/wp-content/uploads/2021/05/Apple-iPhone-12-Pro-Max-Pacific-Blue.png",
+    "productPrice": 23000000.0,
+    "Numbers": 3,
+    "brandID": 1
+  },
+  {
+    "productId": 6,
+    "ProductName": "Iphone 11 Pro Max",
+    "productDes": "Apple iPhone 11 Pro Max was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut.",
+    "productImg": "https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-600x600.jpg",
+    "productPrice": 13000000.0,
+    "Numbers": 3,
+    "brandID": 1
+  },
+  {
+    "productId": 7,
+    "ProductName": "Oppo F7",
+    "productDes": "Oppo F7 was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut.",
+    "productImg": "https://bizweb.dktcdn.net/thumb/1024x1024/100/420/160/products/f7-percentage-c4-percentage-91o-percentage-cc-percentage-89.png?v=1622783677963",
+    "productPrice": 3500000.0,
+    "Numbers": 3,
+    "brandID": 1
+  },
+  {
+    "productId": 8,
+    "ProductName": "Realme C25",
+    "productDes": "Realme C25 was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut.",
+    "productImg": "https://cdn.tgdd.vn/Products/Images/42/238483/TimerThumb/realme-c25s.jpg",
+    "productPrice": 3000000.0,
+    "Numbers": 3,
+    "brandID": 1
   }
 ]

@@ -32,21 +32,21 @@ namespace WebApp.Controllers
 
 
         [HttpPost("AddToCart")]
-        public async Task<IActionResult> AddToCart(string idProduct)
+        public async Task<IActionResult> AddToCart(int productId)
         {
-            return await AddItem(idProduct, 1);
+            return await AddItem(productId, 1);
         }
 
         [HttpPost("RemoveFromCart")]
-        public async Task<IActionResult> RemoveFromCart(string idProduct)
+        public async Task<IActionResult> RemoveFromCart(string productId)
         {
-            return await RemoveItem(idProduct, true);
+            return await RemoveItem(productId, true);
         }
 
         [HttpPost("ReduceItem")]
-        public async Task<IActionResult> ReduceItem(string idProduct)
+        public async Task<IActionResult> ReduceItem(string productId)
         {
-            return await RemoveItem(idProduct, false);
+            return await RemoveItem(productId, false);
         }
 
         private async Task<ApiResult> GetAllItem(List<OrderDetailEditModel> cookieCart)
@@ -65,9 +65,9 @@ namespace WebApp.Controllers
             return result;
         }
 
-        private async Task<IActionResult> AddItem(string idProduct, int number)
+        private async Task<IActionResult> AddItem(int productId, int number)
         {
-            var product = await _productService.GetById(idProduct);
+            var product = await _productService.GetById(productId);
             if (product == null) return BadRequest("Không tìm thấy sản phẩm cần thêm");
             if (product.Numbers < number) return Ok(new ApiErrorResult("Hết hàng"));
 
@@ -77,30 +77,30 @@ namespace WebApp.Controllers
             {
                 cookieCart = new List<OrderDetailEditModel>()
                 {
-                    new OrderDetailEditModel() { IdProduct = product.IdProduct, Numbers = number }
+                    new OrderDetailEditModel() { productId = product.productId, Numbers = number }
                 };
             }
             else
             {
                 // check product exists in cart
-                var alreadyExists = cookieCart.Find(e => e.IdProduct.Equals(product.IdProduct));
+                var alreadyExists = cookieCart.Find(e => e.productId.Equals(product.productId));
                 if (alreadyExists != null)
                     alreadyExists.Numbers += number;
                 else
-                    cookieCart.Add(new OrderDetailEditModel() { IdProduct = product.IdProduct, Numbers = number });
+                    cookieCart.Add(new OrderDetailEditModel() { productId = product.productId, Numbers = number });
             }
             SetJsonDataCookie("cart", cookieCart);
 
             return Ok(await GetAllItem(cookieCart));
         }
 
-        private async Task<IActionResult> RemoveItem(string idProduct, bool isClear)
+        private async Task<IActionResult> RemoveItem(string productId, bool isClear)
         {
             var cookieCart = GetDataFromJsonCookie<List<OrderDetailEditModel>>("cart");
             if (cookieCart == null) return Ok(new ApiErrorResult("Không có sản phẩm nào trong giỏ hàng"));
 
             // check product exists in cart
-            var alreadyExists = cookieCart.Find(e => e.IdProduct.Equals(idProduct));
+            var alreadyExists = cookieCart.Find(e => e.productId.Equals(productId));
             if (alreadyExists == null) return BadRequest();
 
             if (isClear || alreadyExists.Numbers == 1) cookieCart.Remove(alreadyExists);

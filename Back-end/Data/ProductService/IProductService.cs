@@ -12,7 +12,10 @@ namespace Data.ProductService
     {
         Task<List<ProductViewModel>> GetAll();
 
-        Task<ProductViewModel> GetById(string id);
+        Task<ProductViewModel> GetById(int id);
+
+        Task<List<ProductViewModel>> GetByBrand(int id);
+
 
         Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart);
 

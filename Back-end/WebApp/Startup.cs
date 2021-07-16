@@ -1,3 +1,4 @@
+using Data.BrandService;
 using Data.OrderService;
 using Data.ProductService;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,8 @@ namespace WebApp
 
             services.AddSingleton<IProductService, MyProductService>();
             services.AddSingleton<IOrderService, MyOrderService>();
+            services.AddSingleton<IBrandService, MyBrandService>();
+
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();

@@ -6,16 +6,19 @@ namespace Model.Product
 {
     public class ProductViewModel
     {
-        public string IdProduct { get; set;}
+        public int productId { get; set;}
 
-        public string ProductName { get; set; }
+        public string productName { get; set; }
 
-        public string Description { get; set; }
+        public string productDes { get; set; }
 
-        public string ImageURL { get; set; }
+        public string productImg { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal productPrice { get; set; }
 
-        public int Numbers { get; set; } 
+        public int Numbers { get; set; }
+
+        public int brandID { get; set; }
+
     }
 }

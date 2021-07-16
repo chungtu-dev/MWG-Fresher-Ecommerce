@@ -31,9 +31,19 @@ namespace WebApp.Controllers
 
         // GET: SanPham/id
         [HttpGet("Product/{id}")]
-        public async Task<IActionResult> GetById(string id)
+        public async Task<IActionResult> GetById(int id)
         {
             var product = await _productService.GetById(id);
+
+            if (product == null) return BadRequest();
+            return Ok(product);
+        }
+
+        // GET: Product/brand/id
+        [HttpGet("Product/brand/{id}")]
+        public async Task<IActionResult> GetByBrand(int id)
+        {
+            var product = await _productService.GetByBrand(id);
 
             if (product == null) return BadRequest();
             return Ok(product);

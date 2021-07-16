@@ -57,7 +57,7 @@ namespace WebApp.Controllers
                 if (product.Numbers < item.Numbers)
                 {
 
-                    string message = "Sản phẩm " + product.ProductName;
+                    string message = "Sản phẩm " + product.productName;
                     if (product.Numbers > 0) message = " chỉ còn " + product.Numbers + " sản phẩm";
                     else message = " đã hết hàng";
 
@@ -70,7 +70,7 @@ namespace WebApp.Controllers
             var result = await _orderService.Add(cart);
             if (result == null) return Ok(new ApiErrorResult("Đặt hàng thất bại"));
 
-            _productService.ReduceNumberProduct(cookieCart);
+            await _productService.ReduceNumberProduct(cookieCart);
             SetJsonDataCookie("cart", null);
             return Ok(new ApiSuccessResult(cart));
         }

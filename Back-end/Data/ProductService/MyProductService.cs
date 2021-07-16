@@ -17,12 +17,22 @@ namespace Data.ProductService
             return await ReadData();
         }
 
-        public async Task<ProductViewModel> GetById(string id)
+        public async Task<ProductViewModel> GetById(int id)
         {
             var data = await ReadData();
 
             if (data == null) return null;
-            return data.Find(e => e.IdProduct.Equals(id));
+            return data.Find(e => e.productId.Equals(id));
+        }
+        
+        public async Task<List<ProductViewModel>> GetByBrand(int id)
+        {
+            var data = await ReadData();
+
+            if (data == null) return null;
+            //return data.Find(e => e.brandID.Equals(id));
+            return data.FindAll(e => e.brandID == id);
+            
         }
 
         public async Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart)
@@ -34,14 +44,14 @@ namespace Data.ProductService
 
             foreach (var item in cart)
             {
-                var find = data.Find(e => e.IdProduct.Equals(item.IdProduct));
+                var find = data.Find(e => e.productId.Equals(item.productId));
                 if (find != null)
                 {
                     var newObj = new OrderDetailViewModel()
                     {
                         Product = find,
                         Numbers = item.Numbers,
-                        TotalPrice = find.Price * item.Numbers
+                        TotalPrice = find.productPrice * item.Numbers
                     };
                     result.TotalPrice += newObj.TotalPrice;
                     result.Details.Add(newObj);
@@ -57,7 +67,7 @@ namespace Data.ProductService
             if (data == null) return false;
             foreach(var item in cart)
             {
-                var find = data.Find(e => e.IdProduct.Equals(item.IdProduct));
+                var find = data.Find(e => e.productId.Equals(item.productId));
                 find.Numbers -= item.Numbers;
             }
 
