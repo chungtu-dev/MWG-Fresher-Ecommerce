@@ -1,4 +1,5 @@
 ﻿using Model.Order;
+using Model.OrderDetail;
 using Model.Product;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Data.ProductService
 
         Task<ProductViewModel> GetById(string id);
 
-        Task<OrderViewModel> GetCart(OrderEditModel cart);
+        Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart);
+
+        Task<bool> ReduceNumberProduct(List<OrderDetailEditModel> cart);
     }
 }

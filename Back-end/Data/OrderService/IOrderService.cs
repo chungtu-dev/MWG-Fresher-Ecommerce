@@ -1,4 +1,5 @@
-﻿using Model.Product;
+﻿using Model.Order;
+using Model.Product;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Data.OrderService
 {
     public interface IOrderService
     {
-        Task<string> Add();
+        Task<string> Add(OrderViewModel model);
     }
 }

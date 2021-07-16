@@ -18,13 +18,5 @@ namespace Model.Order
 
         [Required(ErrorMessage = "Chưa có địa chỉ giao hàng")]
         public string Address { get; set; }
-
-        [EnsureOneElement(ErrorMessage = "Đơn hàng chưa có sản phẩm")]
-        public List<OrderDetailEditModel> Details { get; set; }
-
-        public OrderEditModel()
-        {
-            Details = new List<OrderDetailEditModel>();
-        }
     }
 }

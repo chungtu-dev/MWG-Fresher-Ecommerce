@@ -1,21 +1,16 @@
-﻿[
+[
   {
     "IdOrder": "i1",
     "OrdererName": "Luan",
-    "PhoneNumber":  "0123456789",
+    "PhoneNumber": "0123456789",
     "Address": "TP.HCM",
-    "DateOrder": "11/2/2020",
-    "Status": "Đã thanh toán",
-    "TotalPrice": 1000,
+    "DateOrder": "2020-11-02T00:00:00",
+    "TotalPrice": 1000.0,
     "Details": [
       {
-        "IdProduct": "p1",
-        "ProductName": "",
-        "Description": "des2",
-        "ImageURL": "image2",
-        "Price": 1000,
+        "Product": null,
         "Numbers": 4,
-        "TotalPrice": 4000
+        "TotalPrice": 4000.0
       }
     ]
   }

@@ -24,85 +24,90 @@ namespace WebApp.Controllers
         [HttpGet("GetCart")]
         public async Task<IActionResult> GetCart()
         {
-            var cookieCart = GetDataFromJsonCookie<OrderEditModel>("cart");
+            var cookieCart = GetDataFromJsonCookie<List<OrderDetailEditModel>>("cart");
             if (cookieCart == null) return Ok(new ApiErrorResult("Không có sản phẩm nào trong giỏ hàng"));
 
-            var cart = await _productService.GetCart(cookieCart);
-            if (cart == null || cart.Details.Count == 0)
-                return Ok(new ApiErrorResult("Không có sản phẩm nào trong giỏ hàng"));
-
-            // check session is created
-            var sessionCart = GetDataFromJsonSession<OrderViewModel>("cart");
-            if (sessionCart == null) SetJsonDataSession("cart", cart);
-
-            return Ok(new ApiSuccessResult(cart));
+            return Ok(await GetAllItem(cookieCart));
         }
 
 
         [HttpPost("AddToCart")]
         public async Task<IActionResult> AddToCart(string idProduct)
         {
-            var product = await _productService.GetById(idProduct);
-            if (product == null) return BadRequest("Không tìm thấy sản phẩm cần thêm");
-            if (product.Numbers == 0) return Ok(new ApiErrorResult("Hết hàng"));
-
-            // write cookie save the product you want to buy
-            var cookieCart = GetDataFromJsonCookie<OrderEditModel>("cart");
-            if (cookieCart == null)
-            {
-                cookieCart = new OrderEditModel();
-                cookieCart.Details.Add(new OrderDetailEditModel() { IdProduct = product.IdProduct, Numbers = 1 });
-            }
-            else
-            {
-                // check product exists in cart
-                var alreadyExists = cookieCart.Details.Find(e => e.IdProduct.Equals(product.IdProduct));
-                if (alreadyExists != null)
-                    alreadyExists.Numbers++;
-                else
-                    cookieCart.Details.Add(new OrderDetailEditModel() { IdProduct = product.IdProduct, Numbers = 1 });
-            }
-            SetJsonDataCookie("cart", cookieCart);
-
-            // write session save the product you want to buy
-            var sessionCart = GetDataFromJsonSession<OrderViewModel>("cart");
-            if (sessionCart == null)
-            {
-                sessionCart = new OrderViewModel();
-                sessionCart.Details.Add(new OrderDetailViewModel() { Product = product, Numbers = 1, TotalPrice = product.Price });
-            }
-            else
-            {
-                // check product exists in cart
-                var alreadyExists = sessionCart.Details.Find(e => e.Product.IdProduct.Equals(product.IdProduct));
-                if (alreadyExists != null)
-                    alreadyExists.Numbers++;
-                else
-                    sessionCart.Details.Add(new OrderDetailViewModel() { Product = product, Numbers = 1, TotalPrice = product.Price });
-            }
-            sessionCart.TotalPrice += product.Price;
-            SetJsonDataSession("cart", sessionCart);
-
-            return Json(new ApiSuccessResult(sessionCart.TotalPrice));
+            return await AddItem(idProduct, 1);
         }
 
         [HttpPost("RemoveFromCart")]
         public async Task<IActionResult> RemoveFromCart(string idProduct)
         {
-            var cookieCart = GetDataFromJsonCookie<OrderEditModel>("cart");
-            if (cookieCart == null) return Ok(new ApiErrorResult("Không có sản phẩm nào trong giỏ hàng"));
+            return await RemoveItem(idProduct, true);
+        }
 
-            // check product exists in cart
-            var alreadyExists = cookieCart.Details.Find(e => e.IdProduct.Equals(idProduct));
-            if (alreadyExists == null) return BadRequest();
-            cookieCart.Details.Remove(alreadyExists);
+        [HttpPost("ReduceItem")]
+        public async Task<IActionResult> ReduceItem(string idProduct)
+        {
+            return await RemoveItem(idProduct, false);
+        }
+
+        private async Task<ApiResult> GetAllItem(List<OrderDetailEditModel> cookieCart)
+        {
+            ApiResult result;
 
             var cart = await _productService.GetCart(cookieCart);
             if (cart == null || cart.Details.Count == 0)
-                return Ok(new ApiErrorResult("Không có sản phẩm nào trong giỏ hàng"));
+            {
+                SetJsonDataCookie("cart", null);
+                result = new ApiErrorResult("Không có sản phẩm nào trong giỏ hàng");
+            }
+            else
+                result = new ApiSuccessResult(cart);
 
-            SetJsonDataSession("cart", cart);
-            return Ok(new ApiSuccessResult(cart));
+            return result;
+        }
+
+        private async Task<IActionResult> AddItem(string idProduct, int number)
+        {
+            var product = await _productService.GetById(idProduct);
+            if (product == null) return BadRequest("Không tìm thấy sản phẩm cần thêm");
+            if (product.Numbers < number) return Ok(new ApiErrorResult("Hết hàng"));
+
+            // write cookie save the product you want to buy
+            var cookieCart = GetDataFromJsonCookie<List<OrderDetailEditModel>>("cart");
+            if (cookieCart == null)
+            {
+                cookieCart = new List<OrderDetailEditModel>()
+                {
+                    new OrderDetailEditModel() { IdProduct = product.IdProduct, Numbers = number }
+                };
+            }
+            else
+            {
+                // check product exists in cart
+                var alreadyExists = cookieCart.Find(e => e.IdProduct.Equals(product.IdProduct));
+                if (alreadyExists != null)
+                    alreadyExists.Numbers += number;
+                else
+                    cookieCart.Add(new OrderDetailEditModel() { IdProduct = product.IdProduct, Numbers = number });
+            }
+            SetJsonDataCookie("cart", cookieCart);
+
+            return Ok(await GetAllItem(cookieCart));
+        }
+
+        private async Task<IActionResult> RemoveItem(string idProduct, bool isClear)
+        {
+            var cookieCart = GetDataFromJsonCookie<List<OrderDetailEditModel>>("cart");
+            if (cookieCart == null) return Ok(new ApiErrorResult("Không có sản phẩm nào trong giỏ hàng"));
+
+            // check product exists in cart
+            var alreadyExists = cookieCart.Find(e => e.IdProduct.Equals(idProduct));
+            if (alreadyExists == null) return BadRequest();
+
+            if (isClear || alreadyExists.Numbers == 1) cookieCart.Remove(alreadyExists);
+            else alreadyExists.Numbers--;
+            SetJsonDataCookie("cart", cookieCart);
+
+            return Ok(await GetAllItem(cookieCart));
         }
     }
 }

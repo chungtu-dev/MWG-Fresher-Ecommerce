@@ -4,15 +4,15 @@
     "ProductName": "name1",
     "Description": "des1",
     "ImageURL": "image1",
-    "Price": 1000,
-    "Numbers": 1
+    "Price": 1000.0,
+    "Numbers": 0
   },
   {
     "IdProduct": "id2",
     "ProductName": "name2",
     "Description": "des2",
     "ImageURL": "image2",
-    "Price": 2000,
+    "Price": 2000.0,
     "Numbers": 2
   },
   {
@@ -20,7 +20,7 @@
     "ProductName": "nam3",
     "Description": "des3",
     "ImageURL": "image3",
-    "Price": 3000,
+    "Price": 3000.0,
     "Numbers": 3
   }
 ]

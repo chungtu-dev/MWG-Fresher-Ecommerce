@@ -26,5 +26,12 @@ namespace Model.Order
             TotalPrice = 0;
             Details = new List<OrderDetailViewModel>();
         }
+
+        public void SetInfoOrderer(OrderEditModel editModel)
+        {
+            OrdererName = editModel.OrdererName;
+            PhoneNumber = editModel.PhoneNumber;
+            Address = editModel.Address;
+        }
     }
 }

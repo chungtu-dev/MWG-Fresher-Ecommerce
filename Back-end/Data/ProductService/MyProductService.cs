@@ -25,14 +25,14 @@ namespace Data.ProductService
             return data.Find(e => e.IdProduct.Equals(id));
         }
 
-        public async Task<OrderViewModel> GetCart(OrderEditModel cart)
+        public async Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart)
         {
             var data = await ReadData();
 
             if (data == null) return null;
             var result = new OrderViewModel();
 
-            foreach (var item in cart.Details)
+            foreach (var item in cart)
             {
                 var find = data.Find(e => e.IdProduct.Equals(item.IdProduct));
                 if (find != null)
@@ -49,6 +49,19 @@ namespace Data.ProductService
             }
 
             return result;
+        }
+
+        public async Task<bool> ReduceNumberProduct(List<OrderDetailEditModel> cart)
+        {
+            var data = await ReadData();
+            if (data == null) return false;
+            foreach(var item in cart)
+            {
+                var find = data.Find(e => e.IdProduct.Equals(item.IdProduct));
+                find.Numbers -= item.Numbers;
+            }
+
+            return await WriteData(data);
         }
     }
 }
