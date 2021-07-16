@@ -1,0 +1,141 @@
+{
+  "product": [
+    {
+      "brandID": 1,
+      "productId": 3,
+      "productName": "Iphone 12 Pro Max",
+      "productImg": "http://callmobilegalaxy.com/wp-content/uploads/2021/05/Apple-iPhone-12-Pro-Max-Pacific-Blue.png",
+      "productPrice": 12000000,
+      "productDes": "Apple iPhone 12 Pro Max was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut."
+    },
+    {
+      "brandID": 4,
+      "productId": 2,
+      "productName": "Oppo F7",
+      "productImg": "https://bizweb.dktcdn.net/thumb/1024x1024/100/420/160/products/f7-percentage-c4-percentage-91o-percentage-cc-percentage-89.png?v=1622783677963",
+      "productPrice": 999999,
+      "productDes": "Oppo F7 was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut."
+    },
+    {
+      "brandID": 1,
+      "productId": 5,
+      "productName": "Iphone 11 Pro Max",
+      "productImg": "https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-600x600.jpg",
+      "productPrice": 9000000,
+      "productDes": "Apple iPhone X was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut."
+    },
+    {
+      "brandID": 3,
+      "productId": 7,
+      "productName": "Redmi Note 10 Pro",
+      "productImg": "https://cdn.tgdd.vn/Products/Images/42/222758/xiaomi-redmi-note-10-thumb-green-600x600.jpg",
+      "productPrice": 12000000,
+      "productDes": "Redmi Note 10 Pro was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut."
+    },
+    {
+      "brandID": 2,
+      "productId": 8,
+      "productName": "Samsung Galaxy S21",
+      "productImg": "https://cdn.tgdd.vn/Products/Images/42/220833/TimerThumb/samsung-galaxy-s21-(8).jpg",
+      "productPrice": 12000000,
+      "productDes": "Samsung Galaxy S21 was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut."
+    },
+    {
+      "brandID": 3,
+      "productId": 9,
+      "productName": "Realme C25",
+      "productImg": "https://cdn.tgdd.vn/Products/Images/42/238483/TimerThumb/realme-c25s.jpg",
+      "productPrice": 12000000,
+      "productDes": "Realme C25 was officially released on October 13, 2020. The phone is powered by the new Apple A14 Bionic processor. The smartphone comes with a 6.7 inches Super Retina XDR OLED capacitive touchscreen, 2778 x 1284 pixels resolution and HDR display, True Tone and Wide color (P3) gamut."
+    }
+  ],
+  "brand": [
+    {
+      "name": "Apple",
+      "id": 1
+    },
+    {
+      "name": "Oppo",
+      "id": 4
+    },
+    {
+      "name": "Xiaomi",
+      "id": 3
+    },
+    {
+      "name": "Samsung",
+      "id": 2
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "productList": [
+        {
+          "id": 1,
+          "qty": 1
+        },
+        {
+          "id": 2,
+          "qty": 2
+        },
+        {
+          "id": 3,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "productList": [
+        {
+          "id": 1,
+          "qty": 1
+        },
+        {
+          "id": 2,
+          "qty": 2
+        },
+        {
+          "id": 3,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "productList": [
+        {
+          "id": 1,
+          "qty": 1
+        },
+        {
+          "id": 2,
+          "qty": 2
+        },
+        {
+          "id": 3,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    }
+  ]
+}
