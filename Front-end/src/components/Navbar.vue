@@ -30,20 +30,20 @@
                     <i class="fas fa-shopping-cart"></i>
                     <div class="cart-container">
                         <ul class="cart-list">
-                            <li class="cart-item" v-for="(item,index) in cartData" :key="item.id">
+                            <li class="cart-item" v-for="(item) in cartData" :key="item.product.productId">
                                 <b-row class="cart-item-wrapper">
                                     <b-col class="cart-item-img" sm="3">
-                                        <img :src="item.image" alt="cart-item">
+                                        <img :src="item.product.productImg" alt="cart-item">
                                     </b-col>
                                     <b-col class="cart-item-title" sm="5">
-                                        <span>{{item.name}}</span>
+                                        <span>{{item.product.productName}}</span>
                                     </b-col>
                                     <b-col class="cart-item-quantity" sm="1">
-                                        <span>x{{item.qty}}</span>
+                                        <span>x{{item.numbers}}</span>
                                     </b-col>
                                     <b-col sm="3" class="cart-item-price">
                                         <!-- <span>{{item.price}}</span> -->
-                                        <span>{{cartDataPrice[index]}}</span>
+                                        <span>{{formatPrice(item.totalPrice)}}</span>
                                     </b-col>
                                 </b-row>
                             </li>
@@ -76,7 +76,7 @@ export default {
         }
     },
     created(){
-        this.formatPrice()
+        //this.formatPrice()
     },
     computed:{
         ...mapState(['cartData']),
@@ -86,10 +86,13 @@ export default {
         "$route.params":'onChangeRoute'
     },
     methods:{
-        formatPrice(){
-            for(let item in this.cartData){
-                this.cartDataPrice.push(helper.formatCurrency(this.cartData[item].price))
-            }
+        // formatPrice(){
+        //     for(let item in this.cartData){
+        //         this.cartDataPrice.push(helper.formatCurrency(this.cartData[item].price))
+        //     }
+        // },
+        formatPrice(price){
+            return helper.formatCurrency(price)
         },
         onChangeRoute(){
             //  console.log('Params changed!')

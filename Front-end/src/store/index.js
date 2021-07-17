@@ -20,40 +20,42 @@ export default new Vuex.Store({
   getters:{
     cartDataCountItem:(state)=>{
       let count = 0
-      state.cartData.forEach((item,index) => {
-        count+=state.cartData[index].qty
+      state.cartData.forEach((item) => {
+        count+=item.numbers
       });
       return count
     }
 
   },
   mutations: {
-    ADD_TO_CART(state,item){
-      let newItem = null
+    ADD_TO_CART(state,data){
+      //let newItem = null
       //const cartData = state.cartData
-      for(let i=0;i<state.cartData.length;i++)
-      {
-        if(state.cartData[i].id===item.productId){
-          state.cartData[i].qty++
-          state.cartData[i].price = state.cartData[i].price * state.cartData[i].qty
-          localStorage.setItem('cartData',JSON.stringify(state.cartData))
-          return
-        }
-      }
-      newItem = {
-        id: item.productId,
-        name: item.productName,
-        image:item.productImg,
-        qty: 1,
-        price:item.productPrice
-      }
-      state.cartData.push(newItem)
+      // for(let i=0;i<state.cartData.length;i++)
+      // {
+      //   if(state.cartData[i].id===item.productId){
+      //     state.cartData[i].qty++
+      //     state.cartData[i].price = state.cartData[i].price * state.cartData[i].qty
+      //     localStorage.setItem('cartData',JSON.stringify(state.cartData))
+      //     return
+      //   }
+      // }
+      state.cartData = data.details
 
-      localStorage.setItem('cartData',JSON.stringify(state.cartData))
+      // newItem = {
+      //   id: item.productId,
+      //   name: item.productName,
+      //   image:item.productImg,
+      //   qty: 1,
+      //   price:item.productPrice
+      // }
+      // state.cartData.push(newItem)
+
+      // localStorage.setItem('cartData',JSON.stringify(state.cartData))
 
     },
     SET_CART_DATA(state,cartData){
-      state.cartData = cartData
+      state.cartData = cartData.details
     },
     SET_PRODUCTS(state,products){
         state.product = products
@@ -80,23 +82,50 @@ export default new Vuex.Store({
               console.log("Error",e);
             })
     },
-    setCartData({commit,state}){
-      if(!localStorage.getItem('cartData'))
-      {
-        localStorage.setItem('cartData',JSON.stringify(state.cartData))
-      }
-      else{
-        const cartData = JSON.parse(localStorage.cartData)
-        commit("SET_CART_DATA",cartData)
-      }
+    // setCartData({commit,state}){
+    //   if(!localStorage.getItem('cartData'))
+    //   {
+    //     localStorage.setItem('cartData',JSON.stringify(state.cartData))
+    //   }
+    //   else{
+    //     const cartData = JSON.parse(localStorage.cartData)
+    //     commit("SET_CART_DATA",cartData)
+    //   }
+    // },
+    setCartData({commit},){
+      let loader = this._vm.$loading.show()
+      axios.get(url+'api/GetCart',{withCredentials: true})
+          .then(res=>{
+              if(res.data.isSuccessed)
+              {
+                console.log(res.data);
+                commit("SET_CART_DATA",res.data.data)
+                loader.hide()
+              }
+              else if(!res.data.isSuccessed)
+              {
+                console.log(res.data.message)
+                loader.hide()
+              }
+          })
+          .catch(e=>{
+              console.log("Error",e);
+            })
     },
-    addToCart({commit,state},id){
-      const item = state.product.find(item=>item.productId===id)
+    addToCart({commit},id){
+      //const item = state.product.find(item=>item.productId==id)
       let loader = this._vm.$loading.show()
 
-      axios.post(url+'api/AddToCart?productId='+id)
+      axios.post(url+'api/AddToCart?productId='+id,{withCredentials: true})
       .then(res=>{
         if(res.data.isSuccessed) {
+          loader.hide()
+          commit("ADD_TO_CART",res.data.data)
+
+        }
+        else if(!res.data.isSuccessed)
+        {
+          console.log(res.data.message)
           loader.hide()
         }
       })
@@ -117,7 +146,6 @@ export default new Vuex.Store({
       //   image:item.productImg,
       //   qty: count
       // }
-      commit("ADD_TO_CART",item)
     },
     getProducts({commit}){
       let loader = this._vm.$loading.show()
