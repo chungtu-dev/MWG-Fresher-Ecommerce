@@ -29,7 +29,7 @@
                     <div class="cart-count">{{cartDataCountItem}}</div>
                     <i class="fas fa-shopping-cart"></i>
                     <div class="cart-container">
-                        <ul class="cart-list">
+                        <ul class="cart-list" v-if="cartData.length">
                             <li class="cart-item" v-for="(item) in cartData" :key="item.product.productId">
                                 <b-row class="cart-item-wrapper">
                                     <b-col class="cart-item-img" sm="3">
@@ -48,6 +48,7 @@
                                 </b-row>
                             </li>
                         </ul>
+                        <div class="cart-empty" v-if="!cartData.length || cartData.length==0">Giỏ hàng trống 😒</div>
                     </div>
                 </div>
                 <b-nav-item-dropdown right>
@@ -222,5 +223,14 @@ export default {
     .cart-list li:hover{
         background-color: #ebe8e8;
         cursor: pointer;
+    }
+    .cart-empty{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem;
+        height: 130px;
+        font-weight: 600;
+        opacity: 0.8;
     }
 </style>

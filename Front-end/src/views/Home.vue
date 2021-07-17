@@ -6,7 +6,7 @@
         <b-col class="filter-part" md="2" sm="3">
           <h2 class="filter-part-header">Category</h2>
           <ul class="filter-part-list">
-            <li @click="handleFilter(null,$event)" class="filter-list-item">All</li>
+            <li @click="handleFilter(null,$event)" class="filter-list-item active">All</li>
             <li @click="handleFilter(item.id,$event)" class="filter-list-item" v-for="item in brand" :key="item.id">{{item.name}}</li>
           </ul>
           </b-col>

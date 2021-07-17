@@ -56,7 +56,7 @@ const navcart ={
               commit("ADD_TO_CART",res.data.data)
               this._vm.$notify({
                 group:'message',
-                title:'Trạng thái',
+                title:'Thành công',
                 text:'Sản phẩm đã được thêm vào giỏ hàng',
                 type:'success'
               })
@@ -67,7 +67,7 @@ const navcart ={
               loader.hide()
               this._vm.$notify({
                 group:'message',
-                title:'Trạng thái',
+                title:'Thất bại',
                 text:res.data.message,
                 type:'error'
               })
