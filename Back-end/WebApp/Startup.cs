@@ -26,6 +26,11 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Cho phep ket noi tu web Client(HTML) => API(Web Serv)
+            services.AddCors(c => {
+                c.AddPolicy("AcceptToConnectAPI", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
             services.AddHttpClient();
             services.AddControllersWithViews();
             services.AddSession();
@@ -42,6 +47,9 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //enable Cors
+            app.UseCors("AcceptToConnectAPI");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
