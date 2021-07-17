@@ -41,7 +41,8 @@ namespace WebApp.Controllers
         protected void SetJsonDataCookie(string key, object data)
         {
             var json = JsonConvert.SerializeObject(data);
-            Response.Cookies.Append(key, json);
+
+            Response.Cookies.Append(key, json, new CookieOptions() { SameSite = SameSiteMode.None, Secure = true });
         }
 
         protected void SetJsonDataSession(string key, object data)

@@ -3,22 +3,60 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="https://img.favpng.com/16/3/16/computer-icons-shopping-cart-online-shopping-png-favpng-vrKhvGKSiQxuYu10LeiVYHbUU.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <title>@ViewData["Title"] - ECommerce</title>
-    <link href="~/webpage/js/about.9bbfad3b.js" rel="prefetch">
-    <link href="~/webpage/js/app.b9429550.js" rel="preload" as="script">
+    <link href="~/webpage/bundle.js" rel="preload" as="script">
+    <style>
+        .footer-header{font-size:1rem;font-weight:600}.footer-wrapper{height:auto;margin:36px 0 0 0;width:100%;background-color:#17a2b8;min-height:120px;text-align:left;color:#e6e3e3}.footer-wrapper ul{list-style:none;padding:12px 0}.footer-4-list{flex-direction:row!important}.footer-credit{text-align:center;background-color:#99a3a5}.footer-item{cursor:pointer}.footer-item:hover{color:#fff;transition:.1s ease-in}.credit{width:100%;color:#e6e3e3}
+    </style>
+
 </head>
 <body>
     <header>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container-fluid">
             @RenderBody()
-        </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer>
+        <div class="footer-wrapper container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <ul class="footer-1-list">
+                        <div class="footer-header">Thông tin</div>
+                        <li class="footer-item">Địa chỉ: Cà Mau</li>
+                        <li class="footer-item">SĐT: 0844426425</li>
+                        <li class="footer-item">Email: chuongnd26@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <ul class="footer-2-list">
+                        <div class="footer-header">Hướng dẫn mua hàng</div>
+                        <li class="footer-item">Chính sách đổi trả</li>
+                        <li class="footer-item">Chính sách bảo hành</li>
+                        <li class="footer-item">Chính sách giao hàng</li>
+                        <li class="footer-item">Kiểm định</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <ul class="footer-3-list">
+                        <div class="footer-header">Liên hệ</div>
+                        <li class="footer-item">SĐT: 0844426425</li>
+                        <li class="footer-item">Email: chuongnd26@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <ul class="footer-4-list">
+                        <div class="footer-header">Social</div>
+                        <li class="footer-item"><i class="fab fa-facebook-square"></i></li>
+                        <li class="footer-item"><i class="fab fa-instagram-square"></i></li>
+                        <li class="footer-item"><i class="fab fa-twitter-square"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row footer-credit"><div class="credit">Copyright © Nguyen Dinh Chuong 2021</div></div>
+        </div>
     </footer>
     @RenderSection("Scripts", required: false)
 </body>

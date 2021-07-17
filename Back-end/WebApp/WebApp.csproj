@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\webpage\css\**" />
+    <Content Remove="wwwroot\webpage\css\**" />
+    <EmbeddedResource Remove="wwwroot\webpage\css\**" />
+    <None Remove="wwwroot\webpage\css\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
