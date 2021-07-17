@@ -24,7 +24,7 @@
 import Header from '@/components/Header'
 
 import ProductItem from '@/components/ProductItem'
-import {mapActions,mapState} from 'vuex'
+import {mapActions,mapGetters} from 'vuex'
 // import { v4 as uuidv4 } from 'uuid';
 
 
@@ -52,7 +52,7 @@ export default {
 
   },
   computed:{
-    ...mapState(['result'])
+    ...mapGetters(['result'])
   },
   components: {
     Header,

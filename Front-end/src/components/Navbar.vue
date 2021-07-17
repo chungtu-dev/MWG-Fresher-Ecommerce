@@ -64,7 +64,7 @@
         </div>
 </template>
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import helper from '../helper/index'
 
 export default {
@@ -79,8 +79,7 @@ export default {
         //this.formatPrice()
     },
     computed:{
-        ...mapState(['cartData']),
-        ...mapGetters(['cartDataCountItem'])
+        ...mapGetters(['cartDataCountItem','cartData'])
     },
     watch:{
         "$route.params":'onChangeRoute'
