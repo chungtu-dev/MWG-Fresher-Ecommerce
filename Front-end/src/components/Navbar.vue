@@ -103,7 +103,7 @@ export default {
             e.preventDefault();
             this.$router.push({ path: 'search', query: { q: this.keyword } })
             .catch(()=>{})
-            this.$router.go(0)
+            // this.$router.go(0)
         }
     }
 }

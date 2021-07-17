@@ -5,7 +5,12 @@
       <b-row>
         <b-col class="product-part" md="12" sm="12">
           <b-row class="header-message mb-4">
+            <span v-if="result.length">
               Có {{result.length}} kết quả tìm kiếm cho từ khóa&nbsp;
+            </span>
+            <span v-if="result.length==0 || !result.length">
+              Không tìm thấy kết quả tìm kiếm nào cho từ khóa&nbsp;
+            </span>
               <span class="keyword">{{keyword}}</span>
          </b-row>
 

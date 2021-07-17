@@ -24,7 +24,7 @@ const mutations={
 
 const actions={
     searchProduct({commit},queryString){
-        axios.get(url+'product?q='+queryString)
+        axios.get(url+'api/product/search?name='+queryString)
             .then(res=>{
                 commit("SEARCH_PRODUCT",res.data)
             })
