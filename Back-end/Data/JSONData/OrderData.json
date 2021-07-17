@@ -1,17 +1,2 @@
 [
-  {
-    "IdOrder": "i1",
-    "OrdererName": "Luan",
-    "PhoneNumber": "0123456789",
-    "Address": "TP.HCM",
-    "DateOrder": "2020-11-02T00:00:00",
-    "TotalPrice": 1000.0,
-    "Details": [
-      {
-        "Product": null,
-        "Numbers": 4,
-        "TotalPrice": 4000.0
-      }
-    ]
-  }
 ]

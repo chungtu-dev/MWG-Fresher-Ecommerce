@@ -17,7 +17,7 @@ namespace Data.ProductService
             return await ReadData();
         }
 
-        public async Task<ProductViewModel> GetById(int id)
+        public async Task<ProductViewModel> GetById(string id)
         {
             var data = await ReadData();
 

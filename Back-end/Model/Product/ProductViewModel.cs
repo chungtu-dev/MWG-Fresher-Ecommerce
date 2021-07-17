@@ -6,7 +6,7 @@ namespace Model.Product
 {
     public class ProductViewModel
     {
-        public int productId { get; set;}
+        public string productId { get; set;}
 
         public string productName { get; set; }
 

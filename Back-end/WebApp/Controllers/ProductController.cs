@@ -31,7 +31,7 @@ namespace WebApp.Controllers
 
         // GET: SanPham/id
         [HttpGet("Product/{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
             var product = await _productService.GetById(id);
 

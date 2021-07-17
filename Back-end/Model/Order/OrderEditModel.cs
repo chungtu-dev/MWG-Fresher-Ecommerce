@@ -14,6 +14,7 @@ namespace Model.Order
 
         [Required(ErrorMessage = "Chưa có số điện thoại người đặt hàng")]
         [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
+        [StringLength(10, ErrorMessage = "Số điện thoại không hợp lệ")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Chưa có địa chỉ giao hàng")]

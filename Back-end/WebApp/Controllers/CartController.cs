@@ -32,7 +32,7 @@ namespace WebApp.Controllers
 
 
         [HttpPost("AddToCart")]
-        public async Task<IActionResult> AddToCart(int productId)
+        public async Task<IActionResult> AddToCart(string productId)
         {
             return await AddItem(productId, 1);
         }
@@ -65,7 +65,7 @@ namespace WebApp.Controllers
             return result;
         }
 
-        private async Task<IActionResult> AddItem(int productId, int number)
+        private async Task<IActionResult> AddItem(string productId, int number)
         {
             var product = await _productService.GetById(productId);
             if (product == null) return BadRequest("Không tìm thấy sản phẩm cần thêm");
