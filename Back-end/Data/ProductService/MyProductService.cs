@@ -24,7 +24,7 @@ namespace Data.ProductService
             if (data == null) return null;
             return data.Find(e => e.productId.Equals(id));
         }
-        
+
         public async Task<List<ProductViewModel>> GetByBrand(int id)
         {
             var data = await ReadData();
@@ -33,6 +33,16 @@ namespace Data.ProductService
             //return data.Find(e => e.brandID.Equals(id));
             return data.FindAll(e => e.brandID == id);
             
+        }
+
+        public async Task<List<ProductViewModel>> SearchByName(string name)
+        {
+            var data = await ReadData();
+            var result = data.FindAll(item => item.productName.ToLower().Contains(name.ToLower()));
+
+            if (result == null) return null;
+            return result;
+
         }
 
         public async Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart)

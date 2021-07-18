@@ -35,7 +35,7 @@
 
 <script>
 import Header from '@/components/Header'
-import { mapState,mapActions } from 'vuex'
+import { mapGetters,mapActions } from 'vuex'
 export default {
     created(){
         const id = this.$route.query.id
@@ -46,7 +46,7 @@ export default {
         }
     },
     computed:{
-        ...mapState(['productDetail'])
+        ...mapGetters(['productDetail'])
     },
     methods:{
         ...mapActions(['getProductById','addToCart']),

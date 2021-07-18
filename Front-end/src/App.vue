@@ -1,21 +1,18 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <router-view/>
-    <Footer></Footer>
+    <router-view :key="this.$route.fullPath"/>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
 
 
 export default {
   name: 'App',
   components: {
-    Navbar,
-    Footer
+    Navbar
   }
 }
 </script>

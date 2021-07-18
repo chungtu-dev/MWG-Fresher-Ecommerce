@@ -29,25 +29,26 @@
                     <div class="cart-count">{{cartDataCountItem}}</div>
                     <i class="fas fa-shopping-cart"></i>
                     <div class="cart-container">
-                        <ul class="cart-list">
-                            <li class="cart-item" v-for="(item,index) in cartData" :key="item.id">
+                        <ul class="cart-list" v-if="cartData.length">
+                            <li class="cart-item" v-for="(item) in cartData" :key="item.product.productId">
                                 <b-row class="cart-item-wrapper">
                                     <b-col class="cart-item-img" sm="3">
-                                        <img :src="item.image" alt="cart-item">
+                                        <img :src="item.product.productImg" alt="cart-item">
                                     </b-col>
                                     <b-col class="cart-item-title" sm="5">
-                                        <span>{{item.name}}</span>
+                                        <span>{{item.product.productName}}</span>
                                     </b-col>
                                     <b-col class="cart-item-quantity" sm="1">
-                                        <span>x{{item.qty}}</span>
+                                        <span>x{{item.numbers}}</span>
                                     </b-col>
                                     <b-col sm="3" class="cart-item-price">
                                         <!-- <span>{{item.price}}</span> -->
-                                        <span>{{cartDataPrice[index]}}</span>
+                                        <span>{{formatPrice(item.totalPrice)}}</span>
                                     </b-col>
                                 </b-row>
                             </li>
                         </ul>
+                        <div class="cart-empty" v-if="!cartData.length || cartData.length==0">Giỏ hàng trống 😒</div>
                     </div>
                 </div>
                 <b-nav-item-dropdown right>
@@ -64,7 +65,7 @@
         </div>
 </template>
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import helper from '../helper/index'
 
 export default {
@@ -76,20 +77,22 @@ export default {
         }
     },
     created(){
-        this.formatPrice()
+        //this.formatPrice()
     },
     computed:{
-        ...mapState(['cartData']),
-        ...mapGetters(['cartDataCountItem'])
+        ...mapGetters(['cartDataCountItem','cartData'])
     },
     watch:{
         "$route.params":'onChangeRoute'
     },
     methods:{
-        formatPrice(){
-            for(let item in this.cartData){
-                this.cartDataPrice.push(helper.formatCurrency(this.cartData[item].price))
-            }
+        // formatPrice(){
+        //     for(let item in this.cartData){
+        //         this.cartDataPrice.push(helper.formatCurrency(this.cartData[item].price))
+        //     }
+        // },
+        formatPrice(price){
+            return helper.formatCurrency(price)
         },
         onChangeRoute(){
             //  console.log('Params changed!')
@@ -100,7 +103,7 @@ export default {
             e.preventDefault();
             this.$router.push({ path: 'search', query: { q: this.keyword } })
             .catch(()=>{})
-            this.$router.go(0)
+            // this.$router.go(0)
         }
     }
 }
@@ -220,5 +223,14 @@ export default {
     .cart-list li:hover{
         background-color: #ebe8e8;
         cursor: pointer;
+    }
+    .cart-empty{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem;
+        height: 130px;
+        font-weight: 600;
+        opacity: 0.8;
     }
 </style>

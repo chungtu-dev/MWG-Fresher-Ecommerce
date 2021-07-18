@@ -6,10 +6,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueCookies from 'vue-cookies'
+import Notifications from 'vue-notification'
+import velocity      from 'velocity-animate'
+import Loading from 'vue-loading-overlay';
 
 
 Vue.config.productionTip = false
 Vue.use(VueCookies)
+Vue.use(Notifications,{velocity})
+
+Vue.use(Loading);
 
 // set default config
 Vue.$cookies.config('7d')

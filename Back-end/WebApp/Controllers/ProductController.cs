@@ -28,6 +28,14 @@ namespace WebApp.Controllers
             return Ok(products);
         }
 
+        [HttpGet("Product/Search")]
+        public async Task<IActionResult> Search(string name)
+        {
+            var products = await _productService.SearchByName(name);
+
+            if (products == null) return BadRequest();
+            return Ok(products);
+        }
 
         // GET: SanPham/id
         [HttpGet("Product/{id}")]

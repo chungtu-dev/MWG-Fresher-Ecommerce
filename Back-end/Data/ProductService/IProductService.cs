@@ -16,6 +16,9 @@ namespace Data.ProductService
 
         Task<List<ProductViewModel>> GetByBrand(int id);
 
+        Task<List<ProductViewModel>> SearchByName(string name);
+
+
 
         Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart);
 

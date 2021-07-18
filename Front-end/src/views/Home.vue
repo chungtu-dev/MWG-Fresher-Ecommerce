@@ -6,7 +6,7 @@
         <b-col class="filter-part" md="2" sm="3">
           <h2 class="filter-part-header">Category</h2>
           <ul class="filter-part-list">
-            <li @click="handleFilter(null,$event)" class="filter-list-item">All</li>
+            <li @click="handleFilter(null,$event)" class="filter-list-item active">All</li>
             <li @click="handleFilter(item.id,$event)" class="filter-list-item" v-for="item in brand" :key="item.id">{{item.name}}</li>
           </ul>
           </b-col>
@@ -17,6 +17,13 @@
           </b-row>
         </b-col>
       </b-row>
+      <notifications 
+        group="message" 
+        position="bottom right"
+        animation-type="velocity"
+        :speed="500"
+        :duration="2000" 
+      />
     </b-container>
   </div>
 </template>
@@ -26,7 +33,7 @@
 import Header from '@/components/Header'
 
 import ProductItem from '@/components/ProductItem'
-import {mapActions,mapState} from 'vuex'
+import {mapActions,mapGetters} from 'vuex'
 // import { v4 as uuidv4 } from 'uuid';
 
 
@@ -44,7 +51,7 @@ export default {
 
   },
   computed:{
-    ...mapState(['product','brand'])
+    ...mapGetters(['product','brand'])
   },
   components: {
     Header,
