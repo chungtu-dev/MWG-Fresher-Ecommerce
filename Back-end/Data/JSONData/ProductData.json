@@ -51,7 +51,7 @@
     "productImg": "https://bizweb.dktcdn.net/thumb/1024x1024/100/420/160/products/f7-percentage-c4-percentage-91o-percentage-cc-percentage-89.png?v=1622783677963",
     "productPrice": 3500000.0,
     "Numbers": 3,
-    "brandID": 1
+    "brandID": 4
   },
   {
     "productId": "8",
@@ -60,6 +60,6 @@
     "productImg": "https://cdn.tgdd.vn/Products/Images/42/238483/TimerThumb/realme-c25s.jpg",
     "productPrice": 3000000.0,
     "Numbers": 3,
-    "brandID": 1
+    "brandID": 3
   }
 ]

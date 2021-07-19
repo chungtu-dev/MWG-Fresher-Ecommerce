@@ -25,32 +25,7 @@
                 <b-button size="sm" class="my-2 my-sm-0" type="submit" >Search</b-button>
                 </b-nav-form>
                 <!-- Cart -->
-                <div class="cart-wrapper">
-                    <div class="cart-count">{{cartDataCountItem}}</div>
-                    <i class="fas fa-shopping-cart"></i>
-                    <div class="cart-container">
-                        <ul class="cart-list" v-if="cartData.length">
-                            <li class="cart-item" v-for="(item) in cartData" :key="item.product.productId">
-                                <b-row class="cart-item-wrapper">
-                                    <b-col class="cart-item-img" sm="3">
-                                        <img :src="item.product.productImg" alt="cart-item">
-                                    </b-col>
-                                    <b-col class="cart-item-title" sm="5">
-                                        <span>{{item.product.productName}}</span>
-                                    </b-col>
-                                    <b-col class="cart-item-quantity" sm="1">
-                                        <span>x{{item.numbers}}</span>
-                                    </b-col>
-                                    <b-col sm="3" class="cart-item-price">
-                                        <!-- <span>{{item.price}}</span> -->
-                                        <span>{{formatPrice(item.totalPrice)}}</span>
-                                    </b-col>
-                                </b-row>
-                            </li>
-                        </ul>
-                        <div class="cart-empty" v-if="!cartData.length || cartData.length==0">Giỏ hàng trống 😒</div>
-                    </div>
-                </div>
+                <NavCart :cartData="cartData" :cartDataCountItem="cartDataCountItem"></NavCart>
                 <b-nav-item-dropdown right>
                 <!-- Using 'button-content' slot -->
                 <template #button-content>
@@ -67,8 +42,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import helper from '../helper/index'
+import NavCart from './NavCart.vue'
 
 export default {
+    components:{
+        NavCart
+    },
     name:'Navbar',
     data(){
         return{
@@ -76,34 +55,17 @@ export default {
             cartDataPrice:[]
         }
     },
-    created(){
-        //this.formatPrice()
-    },
     computed:{
         ...mapGetters(['cartDataCountItem','cartData'])
     },
-    watch:{
-        "$route.params":'onChangeRoute'
-    },
     methods:{
-        // formatPrice(){
-        //     for(let item in this.cartData){
-        //         this.cartDataPrice.push(helper.formatCurrency(this.cartData[item].price))
-        //     }
-        // },
         formatPrice(price){
             return helper.formatCurrency(price)
-        },
-        onChangeRoute(){
-            //  console.log('Params changed!')
-            // this.$router.push({ path: 'search', query: { q: this.keyword } })
-            // .catch(()=>{})
         },
         onSubmitSearch(e){
             e.preventDefault();
             this.$router.push({ path: 'search', query: { q: this.keyword } })
             .catch(()=>{})
-            // this.$router.go(0)
         }
     }
 }

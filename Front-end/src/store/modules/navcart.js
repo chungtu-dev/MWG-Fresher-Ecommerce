@@ -26,7 +26,6 @@ const navcart ={
         
       },
       actions: {
-        
         setCartData({commit},){
           let loader = this._vm.$loading.show()
           axios.get(url+'api/GetCart',{withCredentials: true})
@@ -73,10 +72,10 @@ const navcart ={
               })
             }
           })
-          .catch(e=>console.log(e))
+          .catch(e=>{
+            console.log(e)
+          })
         },
-        
-        
       },
 }
 export default navcart
