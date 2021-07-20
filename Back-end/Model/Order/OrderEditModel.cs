@@ -11,6 +11,7 @@ namespace Model.Order
     {
         [Required(ErrorMessage = "Chưa có tên người đặt hàng")]
         public string OrdererName { get; set; }
+        public bool IsMale { get; set; }
 
         [Required(ErrorMessage = "Chưa có số điện thoại người đặt hàng")]
         [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
@@ -19,5 +20,6 @@ namespace Model.Order
 
         [Required(ErrorMessage = "Chưa có địa chỉ giao hàng")]
         public string Address { get; set; }
+        public string OtherRequest { get; set; }
     }
 }
