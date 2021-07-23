@@ -67,7 +67,7 @@ export default {
     this.getBrandFilter();
 
     //Get cart data
-    console.log(this.$cookies.get("cart"));
+    // console.log(this.$cookies.get("cart"));
   },
   computed: {
     ...mapGetters(["product", "brand"]),

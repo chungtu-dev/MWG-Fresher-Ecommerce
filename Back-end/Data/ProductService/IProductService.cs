@@ -1,5 +1,4 @@
-﻿using Model.Cart;
-using Model.Order;
+﻿using Model.Order;
 using Model.OrderDetail;
 using Model.Product;
 using System;
@@ -19,7 +18,9 @@ namespace Data.ProductService
 
         Task<List<ProductViewModel>> SearchByName(string name);
 
-        Task<CartViewModel> GetCart(List<OrderDetailEditModel> cart);
+
+
+        Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart);
 
         Task<bool> ReduceNumberProduct(List<OrderDetailEditModel> cart);
     }

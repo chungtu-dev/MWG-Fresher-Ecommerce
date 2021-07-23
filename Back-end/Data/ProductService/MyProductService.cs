@@ -1,5 +1,4 @@
-﻿using Model.Cart;
-using Model.Order;
+﻿using Model.Order;
 using Model.OrderDetail;
 using Model.Product;
 using System;
@@ -46,12 +45,12 @@ namespace Data.ProductService
 
         }
 
-        public async Task<CartViewModel> GetCart(List<OrderDetailEditModel> cart)
+        public async Task<OrderViewModel> GetCart(List<OrderDetailEditModel> cart)
         {
             var data = await ReadData();
 
             if (data == null) return null;
-            var result = new CartViewModel();
+            var result = new OrderViewModel();
 
             foreach (var item in cart)
             {

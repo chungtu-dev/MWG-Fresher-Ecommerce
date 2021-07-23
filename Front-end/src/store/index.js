@@ -6,6 +6,8 @@ import product from './modules/product'
 import productdetail from './modules/productdetail'
 import navcart from './modules/navcart'
 import brandfilter from './modules/brandfilter'
+import San_Pham from './modules/San_Pham'
+import Tinh_Thanh from './modules/Tinh_Thanh'
 
 
 
@@ -17,6 +19,8 @@ export default new Vuex.Store({
     product,
     productdetail,
     brandfilter,
-    navcart
+    navcart,
+    San_Pham,
+    Tinh_Thanh
   }
 })

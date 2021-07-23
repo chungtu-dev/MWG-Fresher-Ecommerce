@@ -5,6 +5,7 @@ import ProductDetail from '../views/ProductDetail.vue'
 import UserInfo from '../views/UserInfo.vue'
 import Search from '../views/Search.vue'
 import About from '../views/About.vue'
+import Cart from '../views/Cart.vue'
 
 
 
@@ -41,6 +42,11 @@ const routes = [
     path:'/search',
     name:'Search',
     component:Search
+  },
+  {
+    path:'/cart',
+    name:'Cart',
+    component:Cart
   }
 ]
 

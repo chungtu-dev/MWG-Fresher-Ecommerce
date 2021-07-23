@@ -56,22 +56,23 @@ namespace WebApp.Controllers
                 var product = item.Product;
                 if (product.Numbers < item.Numbers)
                 {
+
                     string message = "Sản phẩm " + product.productName;
-                    if (product.Numbers > 0) message += " chỉ còn " + product.Numbers + " sản phẩm";
-                    else message += " đã hết hàng";
+                    if (product.Numbers > 0) message = " chỉ còn " + product.Numbers + " sản phẩm";
+                    else message = " đã hết hàng";
 
                     error.Add(message);
                 }
             }
             if (error.Count != 0) return Ok(new ApiErrorResult(error.ToArray()));
 
-            var order = new OrderViewModel(request, cart);
-            var result = await _orderService.Add(order);
+            cart.SetInfoOrderer(request);
+            var result = await _orderService.Add(cart);
             if (result == null) return Ok(new ApiErrorResult("Đặt hàng thất bại"));
 
             await _productService.ReduceNumberProduct(cookieCart);
             SetJsonDataCookie("cart", null);
-            return Ok(new ApiSuccessResult(order));
+            return Ok(new ApiSuccessResult(cart));
         }
 
     }
